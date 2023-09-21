@@ -1,5 +1,4 @@
 import { NextAuthOptions } from 'next-auth'
-import AdapterUser from 'next-auth'
 import NextAuth from 'next-auth/next'
 import Credentials from 'next-auth/providers/credentials'
 

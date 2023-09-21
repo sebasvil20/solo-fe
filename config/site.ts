@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: 'Next.js + NextUI',
+  name: 'SOLO',
   description: 'Make beautiful websites regardless of your design experience.',
   navItems: [
     {
@@ -11,6 +11,6 @@ export const siteConfig = {
   ],
   navMenuItems: [],
   links: {
-    sponsor: 'https://patreon.com/jrgarciadev',
+    sponsor: '',
   },
 }

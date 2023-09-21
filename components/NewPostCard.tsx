@@ -69,7 +69,7 @@ export const NewPostCard = ({
     return formattedDate
   }
   return (
-    <Card className='w-[540px]'>
+    <Card className='w-[640px] p-2'>
       <CardHeader className='justify-between'>
         <div className='flex gap-5'>
           <Avatar isBordered radius='full' size='md' src='/avatar1.png' />
@@ -83,13 +83,13 @@ export const NewPostCard = ({
           </div>
         </div>
       </CardHeader>
-      <CardBody className='px-3 py-0 text-small text-default-400'>
+      <CardBody className='px-3 py-2 text-2xl text-default-500'>
         <Textarea
-          labelPlacement='outside'
-          placeholder='Enter your description'
-          className='max-w-xl'
-          value={postText} // Asigna el valor del estado local al Textarea
-          onChange={handlePostTextChange} // Maneja los cambios en el Textarea
+          placeholder='Spit your thougths...'
+          minRows={3}
+          value={postText}
+          size='lg'
+          onChange={handlePostTextChange}
         />
       </CardBody>
       <CardFooter className='gap-3'>

@@ -57,7 +57,7 @@ export default function Home() {
           </section>
           <section className='flex flex-row items-center justify-center gap-2 flex-wrap'>
             {posts.map((post, index) => (
-              <Post post={post} key={index} />
+              <Post key={index + post.postText.slice(10)} post={post} />
             ))}
           </section>
         </>

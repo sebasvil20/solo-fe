@@ -56,7 +56,7 @@ export const User = () => {
               key='new'
               onClick={() => signOut()}
               startContent={
-                <SignOut className={iconClasses} size={20} fill='#F31260' />
+                <SignOut className={iconClasses} size={20} stroke='#F31260' />
               }
             >
               Sign out

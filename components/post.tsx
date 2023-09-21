@@ -1,6 +1,6 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useState, useEffect } from 'react'
 import {
   Card,
   CardHeader,
@@ -18,8 +18,19 @@ interface PostProps {
 export const Post: FC<PostProps> = ({ post }) => {
   const { userName, userNick, postText, postDate, userPhoto } = post
 
+  const isTooLarge = postText.length > 400
+
+  const [readMore, setReadMore] = useState<Boolean>(false)
+  const [textToRender, setTextToRender] = useState<String>(
+    postText.slice(0, 400)
+  )
+
+  useEffect(() => {
+    setTextToRender(() => (readMore ? postText : postText.slice(0, 400)))
+  }, [readMore, postText])
+
   return (
-    <Card className='w-[340px]'>
+    <Card className='w-[640px] p-2'>
       <CardHeader className='justify-between'>
         <div className='flex gap-5'>
           <Avatar isBordered radius='full' size='md' src={userPhoto} />
@@ -33,14 +44,24 @@ export const Post: FC<PostProps> = ({ post }) => {
           </div>
         </div>
       </CardHeader>
-      <CardBody className='px-3 py-0 text-small text-default-400'>
-        <p>{postText}</p>
+      <CardBody className='px-3 py-2'>
+        <p className='text-xl leading-normal text-default-500'>
+          {textToRender}
+        </p>
+        {isTooLarge && (
+          <p
+            className='text-sm pt-1 text-default-400 cursor-pointer'
+            onClick={() => {
+              setReadMore(!readMore)
+            }}
+          >
+            {isTooLarge && readMore ? 'Read less...' : 'Read more...'}
+          </p>
+        )}
       </CardBody>
       <CardFooter className='gap-3'>
         <div className='flex gap-1'>
-          <p className='font-semibold text-default-400 text-small'>
-            {postDate}
-          </p>
+          <p className='text-default-300 text-xs'>{postDate}</p>
         </div>
       </CardFooter>
     </Card>
