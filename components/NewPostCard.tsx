@@ -30,11 +30,11 @@ export const NewPostCard = ({
     const today = new Date()
     const formattedToday = formatDate(today)
     const newPost: PostInfo = {
-      userNick: session?.user?.name,
-      userName: session?.user?.name,
+      userNick: session?.user.nickname,
+      userName: session?.user.name,
       postText: postText,
       postDate: formattedToday,
-      userPhoto: session?.user?.image ? session?.user?.image : './avatar1.png',
+      userPhoto: session?.user.image ? session?.user.image : './avatar1.png',
     }
 
     // Llama a la función para agregar el nuevo post
@@ -72,13 +72,18 @@ export const NewPostCard = ({
     <Card className='w-[640px] p-2'>
       <CardHeader className='justify-between'>
         <div className='flex gap-5'>
-          <Avatar isBordered radius='full' size='md' src='/avatar1.png' />
+          <Avatar
+            isBordered
+            radius='full'
+            size='md'
+            src={session?.user.image ? session?.user.image : '/avatar1.png'}
+          />
           <div className='flex flex-col gap-1 items-start justify-center'>
             <h4 className='text-small font-semibold leading-none text-default-600'>
-              {session?.user?.name}
+              {session?.user.name}
             </h4>
             <h5 className='text-small tracking-tight text-default-400'>
-              @{session?.user?.name}
+              @{session?.user.nickname}
             </h5>
           </div>
         </div>

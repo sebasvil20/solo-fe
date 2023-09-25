@@ -1,32 +1,33 @@
-import Credentials from 'next-auth/providers/credentials'
+import GoogleProvider from 'next-auth/providers/google'
 import { NextAuthOptions } from 'next-auth'
 
-const users = [
-  {
-    id: '1',
-    name: 'Juanse Villegas',
-    nickname: '@JuanseTech',
-    email: 'a@e.com',
-    password: '123',
-    image: './avatar1.png',
-  },
-]
-
 export const authOptions: NextAuthOptions = {
+  pages: {
+    signIn: '/auth',
+  },
   providers: [
-    Credentials({
-      name: 'Credentials',
-      credentials: {
-        email: { label: 'email', placeholder: 'enter email' },
-        password: { label: 'password', type: 'password' },
-      },
-      async authorize(credentials, req) {
-        // if (!credentials || !credentials.email || !credentials.password)
-        //   return null
-        // const user = users.find((item) => item.email === credentials.email)
-        // if (user?.password === credentials.password) return user
-        return users[0]
-      },
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user }
+    },
+
+    async session({ session, token, user }) {
+      session.user = token as any
+
+      return session
+    },
+
+    async signIn({ account, profile, user }) {
+      console.log('profile', profile)
+      console.log('account', account)
+      console.log('user', user)
+      user.nickname = profile?.email?.split('@')[0] || ''
+      return true
+    },
+  },
 }

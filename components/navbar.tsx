@@ -7,8 +7,11 @@ import {
   NavbarMenuToggle,
   NavbarBrand,
   NavbarItem,
-} from '@nextui-org/navbar'
-import { Button, Link, Input, link as linkStyles } from '@nextui-org/react'
+  Button,
+  Link,
+  Input,
+  link as linkStyles,
+} from '@nextui-org/react'
 
 import { siteConfig } from '@/config/site'
 import NextLink from 'next/link'

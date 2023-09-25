@@ -1,5 +1,7 @@
 'use client'
 
+import { signIn, signOut, useSession } from 'next-auth/react'
+
 import {
   Button,
   User as NextUIUser,
@@ -10,7 +12,6 @@ import {
   Listbox,
   ListboxItem,
 } from '@nextui-org/react'
-import { signIn, signOut, useSession } from 'next-auth/react'
 import { SignOut } from './icons'
 
 export const User = () => {

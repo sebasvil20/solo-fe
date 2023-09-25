@@ -4,8 +4,8 @@ import { siteConfig } from '@/config/site'
 import { fontSans } from '@/config/fonts'
 import { Providers } from './providers'
 import { Navbar } from '@/components/navbar'
-import { Link } from '@nextui-org/link'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: {
@@ -46,7 +46,6 @@ export default function RootLayout({
             </main>
             <footer className='w-full flex items-center justify-center py-3'>
               <Link
-                isExternal
                 className='flex items-center gap-1 text-current'
                 href='https://twitter.com/JuanseTech'
                 title='@JuanseTech'

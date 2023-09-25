@@ -2,7 +2,8 @@ export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: 'SOLO',
-  description: 'Make beautiful websites regardless of your design experience.',
+  description:
+    'Do you think you are alone? Well that is not true, you are not alone, you are with SOLO.',
   navItems: [
     {
       label: 'Home',
@@ -11,6 +12,6 @@ export const siteConfig = {
   ],
   navMenuItems: [],
   links: {
-    sponsor: '',
+    sponsor: 'https://paypal.me/juansetech',
   },
 }

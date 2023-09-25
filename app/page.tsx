@@ -16,12 +16,12 @@ export default function Home() {
     if (status === 'authenticated') {
       setPosts([
         {
-          userNick: session?.user?.name,
-          userName: session?.user?.name,
+          userNick: session?.user.nickname,
+          userName: session?.user.name,
           postText: 'Odio a todo el mundo, sé cosas',
           postDate: 'Julio 31, 2023',
-          userPhoto: session?.user?.image
-            ? session?.user?.image
+          userPhoto: session?.user.image
+            ? session?.user.image
             : './avatar1.png',
         },
       ])
